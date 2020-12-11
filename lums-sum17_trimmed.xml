@@ -1,0 +1,512 @@
+<problem name="lums-sum17" nrDays="7" nrWeeks="9" slotsPerDay="288">
+  <optimization distribution="10" student="10" time="1" />
+  <courses>
+    <course id="1">
+      <config id="1">
+        <subpart id="1">
+          <class id="1" limit="10">
+            <time days="1111000" length="22" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="2">
+      <config id="2">
+        <subpart id="2">
+          <class id="2" limit="5">
+            <time days="1111000" length="15" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="198" weeks="111111111" />
+            <time days="1111000" length="15" penalty="12" start="204" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="3">
+      <config id="3">
+        <subpart id="3">
+          <class id="3" limit="50">
+            <time days="1111000" length="15" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="198" weeks="111111111" />
+            <time days="1111000" length="15" penalty="12" start="204" weeks="111111111" />
+          </class>
+        </subpart>
+        <subpart id="4">
+          <class id="4" limit="50" parent="3">
+            <time days="1010000" length="34" penalty="0" start="96" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="96" weeks="111111111" />
+            <time days="0100100" length="34" penalty="0" start="96" weeks="111111111" />
+            <time days="0010100" length="34" penalty="0" start="96" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="108" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="108" weeks="111111111" />
+            <time days="0100100" length="34" penalty="0" start="108" weeks="111111111" />
+            <time days="0010100" length="34" penalty="0" start="108" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="114" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="114" weeks="111111111" />
+            <time days="0100100" length="34" penalty="0" start="114" weeks="111111111" />
+            <time days="0010100" length="34" penalty="0" start="114" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="120" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="120" weeks="111111111" />
+            <time days="0100100" length="34" penalty="0" start="120" weeks="111111111" />
+            <time days="0010100" length="34" penalty="0" start="120" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="126" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="126" weeks="111111111" />
+            <time days="0100100" length="34" penalty="12" start="126" weeks="111111111" />
+            <time days="0010100" length="34" penalty="12" start="126" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="132" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="132" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="138" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="138" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="144" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="144" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="150" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="150" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="156" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="156" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="162" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="162" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="168" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="168" weeks="111111111" />
+            <time days="0100100" length="34" penalty="0" start="168" weeks="111111111" />
+            <time days="0010100" length="34" penalty="0" start="168" weeks="111111111" />
+            <time days="1010000" length="34" penalty="0" start="180" weeks="111111111" />
+            <time days="0101000" length="34" penalty="0" start="180" weeks="111111111" />
+            <time days="0100100" length="34" penalty="0" start="180" weeks="111111111" />
+            <time days="0010100" length="34" penalty="0" start="180" weeks="111111111" />
+            <time days="1010000" length="34" penalty="12" start="186" weeks="111111111" />
+            <time days="0101000" length="34" penalty="12" start="186" weeks="111111111" />
+            <time days="0100100" length="34" penalty="12" start="186" weeks="111111111" />
+            <time days="0010100" length="34" penalty="12" start="186" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="4">
+      <config id="4">
+        <subpart id="5">
+          <class id="5" limit="55">
+            <time days="1111000" length="15" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="198" weeks="111111111" />
+            <time days="1111000" length="15" penalty="12" start="204" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="5">
+      <config id="5">
+        <subpart id="6">
+          <class id="6" limit="50">
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="6">
+      <config id="6">
+        <subpart id="7">
+          <class id="7" limit="50">
+            <time days="1111000" length="22" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="7">
+      <config id="7">
+        <subpart id="8">
+          <class id="8" limit="50">
+            <time days="1111000" length="22" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="8">
+      <config id="8">
+        <subpart id="9">
+          <class id="9" limit="50">
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="9">
+      <config id="9">
+        <subpart id="10">
+          <class id="10" limit="50">
+            <time days="1111000" length="22" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="10">
+      <config id="10">
+        <subpart id="11">
+          <class id="11" limit="50">
+            <time days="1111000" length="22" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="11">
+      <config id="11">
+        <subpart id="12">
+          <class id="12" limit="60">
+            <time days="1111000" length="15" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="198" weeks="111111111" />
+            <time days="1111000" length="15" penalty="12" start="204" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="12">
+      <config id="12">
+        <subpart id="13">
+          <class id="13" limit="35">
+            <time days="1111000" length="22" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="13">
+      <config id="13">
+        <subpart id="14">
+          <class id="14" limit="30">
+            <time days="1111000" length="15" penalty="20" start="96" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="108" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="114" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="120" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="126" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="132" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="138" weeks="111111111" />
+            <time days="1111000" length="15" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="150" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="156" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="162" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="168" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="174" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="180" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="186" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="192" weeks="111111111" />
+            <time days="1111000" length="15" penalty="20" start="198" weeks="111111111" />
+            <time days="1111000" length="15" penalty="32" start="204" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="14">
+      <config id="14">
+        <subpart id="15">
+          <class id="15" limit="35">
+            <time days="1111000" length="22" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="15">
+      <config id="15">
+        <subpart id="16">
+          <class id="16" limit="45">
+            <time days="1010000" length="58" penalty="0" start="96" weeks="111111111" />
+            <time days="0101000" length="58" penalty="0" start="96" weeks="111111111" />
+            <time days="1010000" length="58" penalty="0" start="108" weeks="111111111" />
+            <time days="0101000" length="58" penalty="0" start="108" weeks="111111111" />
+            <time days="1010000" length="58" penalty="0" start="114" weeks="111111111" />
+            <time days="0101000" length="58" penalty="0" start="114" weeks="111111111" />
+            <time days="1010000" length="58" penalty="0" start="120" weeks="111111111" />
+            <time days="0101000" length="58" penalty="0" start="120" weeks="111111111" />
+            <time days="1010000" length="58" penalty="0" start="126" weeks="111111111" />
+            <time days="0101000" length="58" penalty="0" start="126" weeks="111111111" />
+            <time days="1010000" length="58" penalty="0" start="132" weeks="111111111" />
+            <time days="0101000" length="58" penalty="0" start="132" weeks="111111111" />
+            <time days="1010000" length="58" penalty="0" start="138" weeks="111111111" />
+            <time days="0101000" length="58" penalty="0" start="138" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="16">
+      <config id="16">
+        <subpart id="17">
+          <class id="17" limit="40">
+            <time days="1111000" length="22" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="17">
+      <config id="17">
+        <subpart id="18">
+          <class id="18" limit="30">
+            <time days="1111000" length="22" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="18">
+      <config id="18">
+        <subpart id="19">
+          <class id="19" limit="25">
+            <time days="1111000" length="22" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+    <course id="19">
+      <config id="19">
+        <subpart id="20">
+          <class id="20" limit="30">
+            <time days="1111000" length="22" penalty="0" start="96" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="108" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="114" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="120" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="126" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="132" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="138" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="144" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="150" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="156" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="162" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="168" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="174" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="180" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="186" weeks="111111111" />
+            <time days="1111000" length="22" penalty="0" start="192" weeks="111111111" />
+            <time days="1111000" length="22" penalty="12" start="198" weeks="111111111" />
+          </class>
+        </subpart>
+      </config>
+    </course>
+  </courses>
+  <distributions>
+    <distribution required="true" type="SameAttendees">
+      <class id="3" />
+      <class id="4" />
+    </distribution>
+    <distribution required="true" type="SameAttendees">
+      <class id="14" />
+      <class id="15" />
+    </distribution>
+  </distributions>
+  <students />
+</problem>
