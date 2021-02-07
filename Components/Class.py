@@ -7,3 +7,4 @@ class Class:
         self.course = course
         self.availTimes = availTimes
         self.classConstraints = []
+        self.selected = -1
