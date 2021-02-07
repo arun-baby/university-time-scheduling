@@ -185,6 +185,8 @@ class Preprocessing:
         #requiredTypes = ['Precedence', 'NotOverlap', 'SameTime', 'DifferentTime', 'MinGap', 'DifferentDays']
         requiredTypes = ['NotOverlap', 'DifferentTime', 'DifferentDays']
 
+        #To remove classes from unused configurations
+        keep = False
         #Iterating through all distribution constraints
         for dist in distributionXML:
             #getting type of constraints to be checked
@@ -197,15 +199,24 @@ class Preprocessing:
                 #finding all classIDs and then appending to a list
                 classList = []
                 classXML = dist.findall('class')
+                #Get rejected classes as it occurs in rejected configurations
+                rejectCount = 0
                 for singleClass in classXML:
-                    classList.append(singleClass.get('id'))
-                #Check if constraint is hard, if yes, adding it to hard constraints
-                if(dist.get('required') == 'true'):
-                    hardConstraints.append(HardConstraint(constraintType, classList))
-                #If not, adding it to soft constraints
-                else:
-                    penalty = dist.get('penalty')
-                    softConstraints.append(SoftConstraint(constraintType, classList, penalty))
+                    #Add to the constraint only if class exists in the already in memory class dictionary
+                    if(singleClass.get('id') in classes.keys()):
+                        classList.append(singleClass.get('id'))
+                    #Remove constraints with only one remaining class
+                    else:
+                        rejectCount = rejectCount + 1
+                #The constraints should have atleast 2 classes after removing all rejected classes
+                if ((len(classList)-rejectCount) > 1):
+                    #Check if constraint is hard, if yes, adding it to hard constraints
+                    if(dist.get('required') == 'true'):
+                        hardConstraints.append(HardConstraint(constraintType, classList))
+                    #If not, adding it to soft constraints
+                    else:
+                        penalty = dist.get('penalty')
+                        softConstraints.append(SoftConstraint(constraintType, classList, penalty))
 
         print("%d Hard Constraints extracted"%(len(hardConstraints)))
         print("%d Soft Constraints extracted"%(len(softConstraints)))

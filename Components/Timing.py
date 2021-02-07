@@ -3,10 +3,10 @@ import numpy as np
 class Timing:
     def __init__(self, days, length, start, week, penalty):
         self.days = days
-        self.length = length
-        self.start = start
+        self.length = int(length)
+        self.start = int(start)
         self.week = week
-        self.penalty = penalty
+        self.penalty = int(penalty)
         
         weeks = list(week)
         days = list(days)

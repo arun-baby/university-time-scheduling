@@ -861,9 +861,157 @@
   </courses>
   <distributions>
     <distribution type="NotOverlap" required="true">
+      <class id="2" />
+      <class id="7" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="3" />
+      <class id="6" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="4" />
+      <class id="5" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="8" />
+      <class id="9" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="11" />
+      <class id="12" />
+      <class id="13" />
+      <class id="14" />
+      <class id="19" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="15" />
+      <class id="16" />
+      <class id="17" />
+      <class id="18" />
+      <class id="20" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="24" />
+      <class id="25" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="49" />
+      <class id="50" />
+      <class id="80" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="51" />
+      <class id="62" />
+      <class id="65" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="52" />
+      <class id="71" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="53" />
+      <class id="54" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="55" />
+      <class id="56" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="58" />
+      <class id="59" />
+      <class id="60" />
+      <class id="61" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="63" />
+      <class id="64" />
+      <class id="66" />
+      <class id="67" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="68" />
+      <class id="69" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="70" />
+      <class id="72" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="73" />
+      <class id="74" />
+      <class id="75" />
+      <class id="76" />
+      <class id="77" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="78" />
+      <class id="79" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="81" />
+      <class id="82" />
+      <class id="83" />
+      <class id="84" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="85" />
+      <class id="86" />
+      <class id="87" />
+      <class id="88" />
+      <class id="89" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="90" />
+      <class id="91" />
+      <class id="92" />
+      <class id="93" />
+      <class id="94" />
+      <class id="95" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="97" />
+      <class id="98" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="99" />
+      <class id="104" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="105" />
+      <class id="106" />
+      <class id="107" />
+      <class id="108" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="109" />
+      <class id="110" />
+      <class id="111" />
+      <class id="112" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="114" />
+      <class id="117" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="115" />
+      <class id="116" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="118" />
+      <class id="119" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="120" />
+      <class id="121" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
       <class id="26" />
       <class id="27" />
       <class id="28" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="23" />
+      <class id="20" />
     </distribution>
     <distribution type="DifferentDays" penalty="4">
       <class id="49" />
@@ -872,6 +1020,110 @@
     <distribution type="DifferentDays" penalty="4">
       <class id="104" />
       <class id="99" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="12" />
+      <class id="11" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="14" />
+      <class id="13" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="17" />
+      <class id="15" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="18" />
+      <class id="16" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="30" />
+      <class id="29" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="32" />
+      <class id="31" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="34" />
+      <class id="33" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="36" />
+      <class id="35" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="38" />
+      <class id="37" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="40" />
+      <class id="39" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="42" />
+      <class id="41" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="44" />
+      <class id="43" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="46" />
+      <class id="45" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="48" />
+      <class id="47" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="50" />
+      <class id="49" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="61" />
+      <class id="60" />
+      <class id="59" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="65" />
+      <class id="62" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="66" />
+      <class id="63" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="67" />
+      <class id="64" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="83" />
+      <class id="81" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="84" />
+      <class id="82" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="94" />
+      <class id="93" />
+      <class id="92" />
+      <class id="91" />
+      <class id="90" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="106" />
+      <class id="105" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="111" />
+      <class id="109" />
+    </distribution>
+    <distribution type="NotOverlap" required="true">
+      <class id="112" />
+      <class id="110" />
     </distribution>
     </distributions>
   <students />
