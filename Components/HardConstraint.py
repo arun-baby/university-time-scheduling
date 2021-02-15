@@ -4,3 +4,4 @@ class HardConstraint:
         self.classes = classes
         self.iterations = 0
         self.timeouts = 0
+        self.satisfied = False
