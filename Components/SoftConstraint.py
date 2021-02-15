@@ -6,3 +6,4 @@ class SoftConstraint:
         self.iterations = 0
         self.timeouts = 0
         self.satisfied = False
+        self.scale = 1
