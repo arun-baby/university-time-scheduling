@@ -6,29 +6,30 @@ import math
 
 import random
 
-class SM:
+class ModSM:
     def __init__(self,budget, stopping_sp, 
-                    initial_temp, beta, gamma, problem, group=None ):
+                    initial_temp, age_limit, local_timeout_limit, rw_limit, steps, beta, gamma, problem, group=None ):
 
         self.group = group
 
-        self.EID = f'SM_{int(time())}'
-
-        
-
+        self.EID = f'MSM_{int(time())}'
         self.BUDGET = budget
         self.STOPPING_SP = stopping_sp
         self.INIT_TEMP = initial_temp
+        self.AGE_LIMIT = age_limit
         self.BETA = beta
         self.GAMMA = gamma
+        self.RW_LIMIT = rw_limit
+        self.LOCAL_TO_LIMIT = local_timeout_limit
+
+        self.RW_SEPS = steps
         
-        self.feasibility = False
 
         self.problem = problem
 
         self.thread = None
 
-        self.lst_str_cols = ['EID', 'Iteration', 'Temperature', 'Best_SP', 'Current_SP', 'Feasibility', 'TimeElapsed']
+        self.lst_str_cols = ['EID', 'Iteration', 'Temperature', 'Best_SP', 'Current_SP',  'Feasibility', 'TimeElapsed']
         # use dictionary comprehension to make dict of dtypes
         dict_dtypes = {x : 'str'  for x in self.lst_str_cols}
         self.df = pd.DataFrame(columns=self.lst_str_cols)
@@ -37,15 +38,17 @@ class SM:
 
     def solve(self):
 
-        self.EID = f'SM_{int(time())}'
+        self.EID = f'MSM_{int(time())}'
 
         print(f'Starting of experiment {self.EID } of group {self.group}')
 
-
+        #Local timeout to 0
+        local_timeout = 0
         #Setting best and current as initial solution
         self.problem.best = self.problem.initial_solution.copy()
         self.problem.current = self.problem.initial_solution.copy()
-        
+        #Setting local best to infinity
+        local_best = math.inf
         #Setting stopping criteria to false
         met_criteria = False
 
@@ -73,9 +76,13 @@ class SM:
             candidate_SP,_ = self.problem.getSearchPenalty(candidate, False)
             current_SP = self.getCurrentSP()
 
-            print(f'candidate = current , {candidate==self.problem.current}')
+            if(candidate_SP < local_best):
+                local_best = candidate_SP
+                local_timeout = 0
+            else:
+                local_timeout = local_timeout + 1
 
-            print(f'Iteration {i}: Temperature {temp}, Best SP: {best_SP}, Candidate SP {candidate_SP}, Current SP {current_SP}')
+            print(f'Iteration {i}: Temperature {temp}, Best SP: {best_SP}, Candidate SP {candidate_SP}, Current SP {current_SP}, Local timeout {local_timeout}')
 
             if( candidate_SP < best_SP):
                 self.problem.best = candidate.copy()
@@ -93,14 +100,32 @@ class SM:
                 print('Switching to new current by satisfying acceptance criteria')
                 self.problem.current = candidate.copy()
 
-            elapsedTime = (-start + (start := perf_counter()))
+            #Reset if timeout limit is over
+            if(local_timeout > self.LOCAL_TO_LIMIT ):
+                #Reset SM parameters
+                temp = self.INIT_TEMP
+                local_best = math.inf
+                local_timeout = 0
+                #Increment timeouts of unsatisfied constraints
+                self.problem.ageConstraints(True)
 
-            print(f'This iteration took {elapsedTime} seconds')
+                #Get age of the oldest persistent hard constraint
+                maxAge = self.problem.getMaxAge()
+                
+                #If solution is infeasible and the oldest age is more than age_limit, perform random walk
+                if((not self.feasibility) and (maxAge > self.AGE_LIMIT)):
+                    focusedConstraints = self.problem.getOldestHardConstraints()
+                    self.problem.current = self.problem.performRandomWalk(self.problem.current.copy(), focusedConstraints, self.RW_LIMIT, self.RW_SEPS)
+                    
 
-            new_bestSP, feasibility = self.getBestSP()
+                    elapsedTime = (-start + (start := perf_counter()))
 
-            row = [self.EID, i, temp, new_bestSP, self.getCurrentSP(),feasibility, elapsedTime]
-            self.df.loc[len(self.df)] = row
+                    print(f'This iteration took {elapsedTime} seconds')
+
+                    new_bestSP, feasibility = self.getBestSP()
+
+                    row = [self.EID, i, temp, new_bestSP, self.getCurrentSP(),feasibility, elapsedTime]
+                    self.df.loc[len(self.df)] = row
 
             if(i>(self.BUDGET-1)):
                 met_criteria = True
@@ -127,8 +152,9 @@ class SM:
 
         uploadParams(params, self.group)
         uploadDataFrame(self.df,2)
-        
-            
+
+
+
 
     def getBestSP(self):
         SP, feasibility = self.problem.getSearchPenalty(self.problem.best)

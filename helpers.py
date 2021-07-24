@@ -277,9 +277,7 @@ def getSearchPenalty(solution):
 
 
 #Energy function
-def calculateEnergy(solution, SPB, problem, gamma):
-    searchPenalty = problem.getSearchPenalty(solution)
-    bestPenalty = SPB
+def calculateEnergy(searchPenalty, bestPenalty, gamma):
 
     energyPower = -1*gamma*(searchPenalty - bestPenalty)
     energy = 1 - math.exp(energyPower)
@@ -287,9 +285,9 @@ def calculateEnergy(solution, SPB, problem, gamma):
     return energy
     
 #calculate the acceptance probability of the candidate
-def acceptanceProbability(candidate, problem, temperature, SPB, gamma):
-    currentEnergy = calculateEnergy(problem.current, SPB, problem,gamma)
-    candidateEnergy = calculateEnergy(candidate, SPB, problem, gamma)
+def acceptanceProbability(candidate_SP, current_SP, temperature, SPB, gamma):
+    currentEnergy = calculateEnergy(current_SP, SPB,gamma)
+    candidateEnergy = calculateEnergy(candidate_SP, SPB, gamma)
     if(candidateEnergy < currentEnergy):
         probability = 1
     else:
@@ -401,10 +399,21 @@ def performRandomWalk(solution, focusedConstraints, classes):
 
 
 from google.cloud import firestore
-def uploadParams(params):
+def uploadParams(params, group):
     db = firestore.Client.from_service_account_json('C:\\Users\\Acer\\Documents\\GitHub\\university-time-scheduling\\utp-320721-e1afef9ba011.json')
-    doc_ref = db.collection('experiments').document(params['EID'])
-    doc_ref.set(params)
+
+    if group is None:
+        print('Individual experiment')
+        doc_ref = db.collection('experiments').document(params['EID'])
+        doc_ref.set(params)
+
+    else:
+        print(f'Experiment Group: {group}')
+        group_Ref = db.collection('experimentGroups').document(group)
+        doc_ref = group_Ref.collection('experiments').document(params['EID'])
+        doc_ref.set(params)
+
+    
     print('Uploaded parameters to Firestore')
 
 from google.oauth2 import service_account
@@ -419,6 +428,7 @@ def uploadDataFrame(df, type):
         schema.append({'name': 'EID','type': 'STRING'})
         schema.append({'name': 'Iteration','type': 'INTEGER'})
         schema.append({'name': 'Best_SP','type': 'INTEGER'})
+        schema.append({'name': 'Feasibility','type': 'BOOLEAN'})
         schema.append({'name': 'TimeElapsed','type': 'FLOAT'})
 
         pandas_gbq.to_gbq(
@@ -432,6 +442,7 @@ def uploadDataFrame(df, type):
         schema.append({'name': 'Best_SP','type': 'INTEGER'})
         schema.append({'name': 'Temperature','type': 'FLOAT'})
         schema.append({'name': 'Current_SP','type': 'INTEGER'})
+        schema.append({'name': 'Feasibility','type': 'BOOLEAN'})
         schema.append({'name': 'TimeElapsed','type': 'FLOAT'})
 
         pandas_gbq.to_gbq(
