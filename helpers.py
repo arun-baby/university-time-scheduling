@@ -186,39 +186,6 @@ def getTimingPenalty(solution, classes):
     #print(f"Timing Penalty: {totalTimingPenalty}")
     return totalTimingPenalty
 
-
-# Function to mutate a given solution
-def mutate(solution):
-    mutation = solution.copy()
-    #Creating a list of keys(classIDs)
-    indexList = list(mutation.keys())
-    #Getting a random classID from the list
-    randomClass = indexList[random.randrange(len(indexList))]
-    #print(solution)
-    #Extracting the timing info of that class
-    timingIndex,timingsLen = mutation[randomClass]
-
-    #Reducing the probabilty of not having a mutation. If a class is selected with a single timing, mutation is not possible. 
-    if timingsLen == 1:
-        for i in range(10):
-            randomClass = indexList[random.randrange(len(indexList))]
-            timingIndex,timingsLen = mutation[randomClass]
-            if(timingsLen>1):
-                break
-    #Mutating the index
-    if(timingsLen != 1):
-        newIndex = (timingIndex+random.randrange(timingsLen-1)+1)%timingsLen
-        mutation[randomClass] = (newIndex, timingsLen)
-        #print(f"Mutating class {randomClass} from timing index {timingIndex} to {newIndex} out of {timingsLen} timings")
-    else:
-        print('No mutation')
-
-    #Replacing the dictionary value
-    
-    #print(solution)
-    return mutation
-
-
 import random
 
 # Function to mutate a given solution
@@ -251,3 +218,223 @@ def mutate(solution):
     
     #print(solution)
     return mutation
+
+#Incrementing interations and timeout counts in constraints
+def ageConstraints(timeout, hardConstraints, softConstraints):
+    for hard in hardConstraints:
+        if(hard.satisfied):
+            hard.iterations = 0
+            hard.timeouts = 0
+        else:
+            hard.iterations = hard.iterations + 1
+            if(timeout):
+                hard.timeouts = hard.timeouts + 1
+    for soft in softConstraints:
+        if(soft.satisfied):
+            soft.iterations = 0
+            soft.timeouts = 0
+        else:
+            soft.iterations = soft.iterations + 1
+            if(timeout):
+                soft.timeouts = soft.timeouts + 1
+
+
+#Cooling function
+def coolTemperature(temperature, beta):
+    return temperature / (1.0 + beta * temperature)
+
+#Return the age of the constraint
+def returnAge(hard):
+    return hard.timeouts
+
+
+#Sort the Hardconstraint in descending order of timeouts
+def sortHardConstraints(hardConstraints):
+   hardConstraints.sort(reverse=True,key=returnAge)
+
+
+#Get the age of the oldest constraint
+def getMaxAge(hardConstraints):
+    sortHardConstraints()
+    return hardConstraints[0].timeouts
+
+
+#Check if the given solution is infeasible
+def isInfeasible(solution):
+    return (getHardPenalty(solution) > 0)
+
+#Getting the oldest constraints that persisted max timeouts
+def getOldestHardConstraints(hardConstraints):
+    sortHardConstraints()
+    return hardConstraints[:3]
+
+
+import math
+
+#Function to calculate search penalty
+def getSearchPenalty(solution):
+    return getHardPenalty(solution) + getSoftPenalty(solution) + getTimingPenalty(solution)
+
+
+#Energy function
+def calculateEnergy(solution, SPB, problem, gamma):
+    searchPenalty = problem.getSearchPenalty(solution)
+    bestPenalty = SPB
+
+    energyPower = -1*gamma*(searchPenalty - bestPenalty)
+    energy = 1 - math.exp(energyPower)
+    print(f'Solution Penalty {searchPenalty}, Best Penalty {bestPenalty}, Energy Power {energyPower}, Energy: {energy}')
+    return energy
+    
+#calculate the acceptance probability of the candidate
+def acceptanceProbability(candidate, problem, temperature, SPB, gamma):
+    currentEnergy = calculateEnergy(problem.current, SPB, problem,gamma)
+    candidateEnergy = calculateEnergy(candidate, SPB, problem, gamma)
+    if(candidateEnergy < currentEnergy):
+        probability = 1
+    else:
+        probPower = (currentEnergy-candidateEnergy)/temperature
+        probability = math.exp(probPower)
+        print(f'Probability power: {probPower}')
+
+    print(f'Probability: {probability}')
+
+    return probability
+
+
+#Function to get penalty only on a few focused hard constraints
+def getFocusedPenalty(solution, focusedConstraints, classes):
+    #Total violations for all focused constraints
+    totalHardViolations = 0
+
+    #Iterating all hard constraints
+    for hard in focusedConstraints:
+        #Check if type is 'NotOverlap'
+        if hard.type == 'NotOverlap':
+
+            #Getting list of classes for the corresponding constraint
+            classList = hard.classes
+            
+            #Getting all possible pairs from the list
+            pairs = list(combinations(classList, 2)) 
+            
+            singleConstraintViolation = 0
+            #Iterating through all the pairs
+            for pair in pairs:
+                #Unpacking thepair
+                class1ID, class2ID = pair
+                #Extracting class timings
+                class1Index,_ = solution[class1ID]
+                class2Index,_ = solution[class2ID]
+                class1Timing = classes[class1ID].availTimes[class1Index]
+                
+                class2Timing = classes[class2ID].availTimes[class2Index]
+
+                #Getting 'NonOverlap' violations
+                violations, dailyOverlap, count = isOverlapped(class1Timing, class2Timing)
+                
+                #Adding to total violations
+                singleConstraintViolation = singleConstraintViolation + violations
+           
+            if(singleConstraintViolation>0):
+                hard.satisfied = False
+            else:
+                hard.satisfied = True
+           
+
+            totalHardViolations = totalHardViolations + singleConstraintViolation
+    print(f"Focused penalty: {totalHardViolations}")
+    return totalHardViolations
+
+import numpy as np
+
+#Perform random walk for a distance
+
+def randomWalk(solution, distance, classSet):
+    
+    #Possible steps for any class
+    step_set = [-1, 0, 1]
+
+    #perform randomwalk for given distance
+    for i in range(distance):
+        for eachClass in classSet:
+            #Generates a random step with equal probability for each class 
+            step = np.random.choice(step_set)
+            timingIndex,timingsLen = solution[eachClass]
+            #Can have a negative value of just -1. We will then given the index of the last timing.
+            if (timingIndex+step) < 0:
+                newIndex = timingsLen - 1
+            else:
+                newIndex = (timingIndex+step)%timingsLen
+            
+            solution[eachClass] = (newIndex, timingsLen)
+
+    return solution
+            
+
+#The function to perform random walk on a focused constraints
+def performRandomWalk(solution, focusedConstraints, classes):
+    classSet = set()
+
+    #Adding all classes in all the constriants to a set
+    for focus in focusedConstraints:
+        classList = focus.classes
+        for one in classList:
+            #Adding to a set since duplicates will be ignored
+            classSet.add(one)
+
+    timeout = 0
+    timeout_limit = 10
+
+    #Return the solution if a better candidate is not acheived even after timeout_limit iterations
+    while(timeout < timeout_limit):
+        #Performing random walk for a distance of 5 steps
+        candidate = randomWalk(solution.copy(), 5, classes)
+        #Check if candidate is better than solution using focused penalty
+        if(getFocusedPenalty(candidate, focusedConstraints) < getFocusedPenalty(solution, focusedConstraints)):
+            solution = candidate
+            timeout = 0
+        else:
+            timeout = timeout + 1
+
+    return solution
+
+
+from google.cloud import firestore
+def uploadParams(params):
+    db = firestore.Client.from_service_account_json('C:\\Users\\Acer\\Documents\\GitHub\\university-time-scheduling\\utp-320721-e1afef9ba011.json')
+    doc_ref = db.collection('experiments').document(params['EID'])
+    doc_ref.set(params)
+    print('Uploaded parameters to Firestore')
+
+from google.oauth2 import service_account
+import pandas_gbq
+
+def uploadDataFrame(df, type):
+    credentials = service_account.Credentials.from_service_account_file(
+    'C:\\Users\\Acer\\Documents\\GitHub\\university-time-scheduling\\utp-320721-e1afef9ba011.json',
+    )
+    if(type==1):
+        schema = []
+        schema.append({'name': 'EID','type': 'STRING'})
+        schema.append({'name': 'Iteration','type': 'INTEGER'})
+        schema.append({'name': 'Best_SP','type': 'INTEGER'})
+        schema.append({'name': 'TimeElapsed','type': 'FLOAT'})
+
+        pandas_gbq.to_gbq(
+    df, 'utp-320721.experiments.experimentLog', project_id='utp-320721', if_exists='append', credentials=credentials, table_schema=schema
+)
+
+    elif(type==2):
+        schema = []
+        schema.append({'name': 'EID','type': 'STRING'})
+        schema.append({'name': 'Iteration','type': 'INTEGER'})
+        schema.append({'name': 'Best_SP','type': 'INTEGER'})
+        schema.append({'name': 'Temperature','type': 'FLOAT'})
+        schema.append({'name': 'Current_SP','type': 'INTEGER'})
+        schema.append({'name': 'TimeElapsed','type': 'FLOAT'})
+
+        pandas_gbq.to_gbq(
+    df, 'utp-320721.experiments.experimentLog', project_id='utp-320721', if_exists='append', credentials=credentials, table_schema=schema
+)
+    print('Uploaded datafram to BigQuery')
