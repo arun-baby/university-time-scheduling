@@ -118,14 +118,14 @@ class ModSM:
                     self.problem.current = self.problem.performRandomWalk(self.problem.current.copy(), focusedConstraints, self.RW_LIMIT, self.RW_SEPS)
                     
 
-                    elapsedTime = (-start + (start := perf_counter()))
+            elapsedTime = (-start + (start := perf_counter()))
 
-                    print(f'This iteration took {elapsedTime} seconds')
+            print(f'This iteration took {elapsedTime} seconds')
 
-                    new_bestSP, feasibility = self.getBestSP()
+            new_bestSP, feasibility = self.getBestSP()
 
-                    row = [self.EID, i, temp, new_bestSP, self.getCurrentSP(),feasibility, elapsedTime]
-                    self.df.loc[len(self.df)] = row
+            row = [self.EID, i, temp, new_bestSP, self.getCurrentSP(),feasibility, elapsedTime]
+            self.df.loc[len(self.df)] = row
 
             if(i>(self.BUDGET-1)):
                 met_criteria = True
@@ -140,7 +140,7 @@ class ModSM:
         params['Filename'] = self.problem.filename
         params['BUDGET'] = self.BUDGET
         params['STOPPING_SP'] = self.STOPPING_SP
-        params['type'] = 'Local Search'
+        params['type'] = 'Modified Simulated Annealing'
         params['TotalIterations'] = i
         finalSP, feasibility = self.getBestSP()
         params['FinalSP'] = finalSP

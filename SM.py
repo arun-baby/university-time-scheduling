@@ -115,7 +115,7 @@ class SM:
         params['Filename'] = self.problem.filename
         params['BUDGET'] = self.BUDGET
         params['STOPPING_SP'] = self.STOPPING_SP
-        params['type'] = 'Local Search'
+        params['type'] = 'Simulated Annealing'
         params['TotalIterations'] = i
         finalSP, feasibility = self.getBestSP()
         params['FinalSP'] = finalSP

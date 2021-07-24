@@ -54,14 +54,19 @@ class LocalSearch:
 
             candidate_SP,_ = self.problem.getSearchPenalty(candidate, False)
 
-            print(f'Iteration {i}: Best SP: {best_SP}, Candidate SP {candidate_SP}')
+            print(f'Iteration {i}: Best SP: {best_SP}, Candidate SP {candidate_SP}', end='\t')
 
             if(candidate_SP<best_SP):
                 self.problem.best = candidate.copy()
-                print('Setting new best')
+                print('Setting new best' , end='\t')
 
 
-            row = [self.EID, i,  best_SP, feasibility, (-start + (start := perf_counter()))]
+            elapsedTime = (-start + (start := perf_counter()))
+
+            print(f'This iteration took {elapsedTime} seconds')
+
+
+            row = [self.EID, i,  best_SP, feasibility, elapsedTime]
             self.df.loc[len(self.df)] = row
             
             if(i>(self.BUDGET-1)):

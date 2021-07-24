@@ -449,3 +449,29 @@ def uploadDataFrame(df, type):
     df, 'utp-320721.experiments.experimentLog', project_id='utp-320721', if_exists='append', credentials=credentials, table_schema=schema
 )
     print('Uploaded datafram to BigQuery')
+
+from google.cloud import bigquery
+
+bqclient = bigquery.Client()
+def getSingleExp_df(EID, columns):
+
+    print(f'Getting date from experiment {EID}, with columns {columns}')
+
+    query_string = f"""
+    SELECT {columns}
+    FROM `utp-320721.experiments.experimentLog` 
+
+    WHERE EID = '{EID}'
+
+    ORDER BY Iteration
+    """
+
+    dataframe = (
+        bqclient.query(query_string)
+        .result()
+        .to_dataframe(
+            create_bqstorage_client=True,
+        )
+    )
+
+    return dataframe
