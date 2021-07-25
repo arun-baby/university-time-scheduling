@@ -32,7 +32,7 @@ def runSM():
     #Acquire read access for file and other common variables
     semaphore.acquire()
     #Simulated Annealing with with hyper parameters
-    sm = SM(budget=iterations_budget, stopping_sp= 500, initial_temp= float(1),
+    sm = SM(budget=iterations_budget, stopping_sp= 500, initial_temp= float(1e-1),
         beta= float(6e-4), gamma = float(1e-4),
         problem= Problem(inputFilename), group=groupname)
     #Read read access for file and other common variables so other threads can access it
