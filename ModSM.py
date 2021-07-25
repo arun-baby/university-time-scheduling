@@ -96,7 +96,7 @@ class ModSM:
                 self.problem.current = candidate.copy()
                 print('Switching to new current by primary condition')
 
-            elif (acceptanceProbability(candidate_SP, current_SP, temp, best_SP, self.GAMMA) > randomThresh):
+            elif ((acceptanceProbability(candidate_SP, current_SP, temp, best_SP, self.GAMMA) - 0.1) > randomThresh):
                 print('Switching to new current by satisfying acceptance criteria')
                 self.problem.current = candidate.copy()
 

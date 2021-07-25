@@ -400,7 +400,7 @@ def performRandomWalk(solution, focusedConstraints, classes):
 
 from google.cloud import firestore
 def uploadParams(params, group):
-    db = firestore.Client.from_service_account_json('C:\\Users\\Acer\\Documents\\GitHub\\university-time-scheduling\\utp-320721-e1afef9ba011.json')
+    db = firestore.Client.from_service_account_json('utp-320721-e1afef9ba011.json')
 
     if group is None:
         print('Individual experiment')
@@ -421,7 +421,7 @@ import pandas_gbq
 
 def uploadDataFrame(df, type):
     credentials = service_account.Credentials.from_service_account_file(
-    'C:\\Users\\Acer\\Documents\\GitHub\\university-time-scheduling\\utp-320721-e1afef9ba011.json',
+    'utp-320721-e1afef9ba011.json',
     )
     if(type==1):
         schema = []
@@ -452,10 +452,10 @@ def uploadDataFrame(df, type):
 
 from google.cloud import bigquery
 
-bqclient = bigquery.Client()
+bqclient = bigquery.Client.from_service_account_json('utp-320721-e1afef9ba011.json')
 def getSingleExp_df(EID, columns):
 
-    print(f'Getting date from experiment {EID}, with columns {columns}')
+    print(f'Getting data from experiment {EID}, with columns {columns}')
 
     query_string = f"""
     SELECT {columns}

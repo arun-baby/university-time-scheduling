@@ -197,7 +197,8 @@ class Problem:
     #Getting the oldest constraints that persisted max timeouts
     def getOldestHardConstraints(self):
         self.sortHardConstraints()
-        return self.hardConstraints[:3]
+        
+        return self.hardConstraints[:10]
 
     #Return the age of the constraint
     def returnAge(hard):
