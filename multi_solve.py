@@ -14,8 +14,8 @@ semaphore = threading.Semaphore()
 
 #Common variables
 inputFilename = 'bet-sum18.xml'
-groupname = 'bet-sum80_50000_' + str(int(time.time()))
-iterations_budget = 50000
+groupname = 'bet-sum80_20000_' + str(int(time.time()))
+iterations_budget = 20000
 
 #Function to run Local Search
 def runLS():
