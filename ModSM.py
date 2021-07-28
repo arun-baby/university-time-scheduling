@@ -8,7 +8,7 @@ import random
 
 class ModSM:
     def __init__(self,budget, stopping_sp, 
-                    initial_temp, age_limit, local_timeout_limit, rw_limit, steps, beta, gamma, problem, group=None ):
+                    initial_temp, age_limit, local_timeout_limit, rw_limit, steps, beta, gamma, problem, prob_offset=0.05, group=None ):
 
         self.group = group
 
@@ -27,13 +27,16 @@ class ModSM:
 
         self.problem = problem
 
+        self.prob_offset = prob_offset
+
         self.thread = None
 
-        self.lst_str_cols = ['EID', 'Iteration', 'Temperature', 'Best_SP', 'Current_SP',  'Feasibility', 'TimeElapsed']
+        self.lst_str_cols = ['EID', 'Iteration', 'Temperature', 'Best_SP', 'Current_SP',  'Feasibility', 'RandomWalk', 'TimeElapsed']
         # use dictionary comprehension to make dict of dtypes
         dict_dtypes = {x : 'str'  for x in self.lst_str_cols}
         self.df = pd.DataFrame(columns=self.lst_str_cols)
         self.df.astype(str)
+        
 
 
     def solve(self):
@@ -57,16 +60,22 @@ class ModSM:
         i = 0
 
         best_SP, feasibility = self.getBestSP()
-
-        row = [self.EID, i, temp, best_SP, self.getCurrentSP(),feasibility, 0]
+        row = [self.EID, i, temp, best_SP, self.getCurrentSP(),feasibility, str(False), 0]
 
         self.df.loc[len(self.df)] = row
+
+        randomWalked = False
+
+        currentRW = 0
+        bestRW = 0
 
         while(not met_criteria):
 
             start, times = perf_counter(), {}
 
             temp = coolTemperature(temp, self.BETA)
+
+            randomWalked = False
 
             i = i+1
 
@@ -96,14 +105,14 @@ class ModSM:
                 self.problem.current = candidate.copy()
                 print('Switching to new current by primary condition')
 
-            elif ((acceptanceProbability(candidate_SP, current_SP, temp, best_SP, self.GAMMA) - 0.05) > randomThresh):
+            elif ((acceptanceProbability(candidate_SP, current_SP, temp, best_SP, self.GAMMA) - self.prob_offset) > randomThresh):
                 print('Switching to new current by satisfying acceptance criteria')
                 self.problem.current = candidate.copy()
 
             #Reset if timeout limit is over
             if(local_timeout > self.LOCAL_TO_LIMIT ):
                 #Reset SM parameters
-                temp = self.INIT_TEMP
+                temp = self.INIT_TEMP/10
                 local_best = math.inf
                 local_timeout = 0
                 #Increment timeouts of unsatisfied constraints
@@ -111,20 +120,38 @@ class ModSM:
 
                 #Get age of the oldest persistent hard constraint
                 maxAge = self.problem.getMaxAge()
+
+                print(f'Max age {maxAge}')
                 
                 #If solution is infeasible and the oldest age is more than age_limit, perform random walk
                 if((not self.feasibility) and (maxAge > self.AGE_LIMIT)):
                     focusedConstraints = self.problem.getOldestHardConstraints()
-                    self.problem.current = self.problem.performRandomWalk(self.problem.current.copy(), focusedConstraints, self.RW_LIMIT, self.RW_SEPS)
+
+                    old_CSP = self.getCurrentSP()
+
+                    self.problem.current = self.problem.performRandomWalk(self.problem.best.copy(), focusedConstraints, self.RW_LIMIT, self.RW_SEPS).copy()
+
+                    
+
+                    if(self.getCurrentSP()<old_CSP):
+                        currentRW = currentRW + 1
+                        print(f'Got new current from randomwalk')
+                        if(self.getCurrentSP()<best_SP):
+                            bestRW = bestRW +1
+                            self.problem.best = self.problem.current.copy()
+                            new_bestSP, feasibility = self.getBestSP()
+                            print(f'Got new best from randomwalk')
+
+                    randomWalked = True
                     
 
             elapsedTime = (-start + (start := perf_counter()))
 
-            print(f'This iteration took {elapsedTime} seconds')
+            #print(f'This iteration took {elapsedTime} seconds')
 
             new_bestSP, feasibility = self.getBestSP()
 
-            row = [self.EID, i, temp, new_bestSP, self.getCurrentSP(),feasibility, elapsedTime]
+            row = [self.EID, i, temp, new_bestSP, self.getCurrentSP(),feasibility, str(randomWalked),elapsedTime]
             self.df.loc[len(self.df)] = row
 
             if(i>(self.BUDGET-1)):
@@ -152,6 +179,9 @@ class ModSM:
 
         uploadParams(params, self.group)
         uploadDataFrame(self.df,2)
+        print(f'Beneficial random walks: {currentRW}')
+        print(f'Great random walks: {bestRW}')
+        print(f'Modified Simulated Annealing {self.EID} finished running.')
 
 
 

@@ -281,7 +281,7 @@ def calculateEnergy(searchPenalty, bestPenalty, gamma):
 
     energyPower = -1*gamma*(searchPenalty - bestPenalty)
     energy = 1 - math.exp(energyPower)
-    print(f'Solution Penalty {searchPenalty}, Best Penalty {bestPenalty}, Energy Power {energyPower}, Energy: {energy}')
+    #print(f'Solution Penalty {searchPenalty}, Best Penalty {bestPenalty}, Energy Power {energyPower}, Energy: {energy}')
     return energy
     
 #calculate the acceptance probability of the candidate
@@ -293,7 +293,7 @@ def acceptanceProbability(candidate_SP, current_SP, temperature, SPB, gamma):
     else:
         probPower = (currentEnergy-candidateEnergy)/temperature
         probability = math.exp(probPower)
-        print(f'Probability power: {probPower}')
+       # print(f'Probability power: {probPower}')
 
     print(f'Probability: {probability}')
 
@@ -443,6 +443,7 @@ def uploadDataFrame(df, type):
         schema.append({'name': 'Temperature','type': 'FLOAT'})
         schema.append({'name': 'Current_SP','type': 'INTEGER'})
         schema.append({'name': 'Feasibility','type': 'BOOLEAN'})
+        schema.append({'name': 'RandomWalk','type': 'BOOLEAN'})
         schema.append({'name': 'TimeElapsed','type': 'FLOAT'})
 
         pandas_gbq.to_gbq(
@@ -475,3 +476,23 @@ def getSingleExp_df(EID, columns):
     )
 
     return dataframe
+
+
+def getRandomWalks(EID):
+    columns = 'Iteration, Best_SP, RandomWalk'
+    query_string = f"""
+        SELECT {columns}
+        FROM `utp-320721.experiments.experimentLog` 
+
+        WHERE EID = '{EID}' and RandomWalk = true
+
+        ORDER BY Iteration
+        """
+
+    return (
+            bqclient.query(query_string)
+            .result()
+            .to_dataframe(
+                create_bqstorage_client=True,
+            )
+        )

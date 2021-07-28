@@ -14,7 +14,7 @@ semaphore = threading.Semaphore()
 
 #Common variables
 inputFilename = 'bet-sum18.xml'
-groupname = 'bet-sum80_20000_' + str(int(time.time()))
+groupname = 'betsum_20k_40rw' + str(int(time.time()))
 iterations_budget = 20000
 
 #Function to run Local Search
@@ -45,7 +45,7 @@ def runMSM():
     #Modified Simulated Annealing with with hyper parameters
     mod_sm = ModSM(budget=iterations_budget, stopping_sp=500, 
                 initial_temp=1.0, age_limit=5,
-                local_timeout_limit=5, rw_limit=10,
+                local_timeout_limit=5, rw_limit=40,
                 steps=5, beta=float(6e-4), gamma = float(1e-4),
                 problem= Problem(inputFilename), group=groupname)
     #Read read access for file and other common variables so other threads can access it
