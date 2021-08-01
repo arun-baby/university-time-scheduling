@@ -123,7 +123,7 @@ class ModSM:
 
                 print(f'Max age {maxAge}')
                 
-                #If solution is infeasible and the oldest age is more than age_limit, perform random walk
+                # #If solution is infeasible and the oldest age is more than age_limit, perform random walk
                 if((not self.feasibility) and (maxAge > self.AGE_LIMIT)):
                     focusedConstraints = self.problem.getOldestHardConstraints()
 

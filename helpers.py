@@ -266,7 +266,7 @@ def isInfeasible(solution):
 #Getting the oldest constraints that persisted max timeouts
 def getOldestHardConstraints(hardConstraints):
     sortHardConstraints()
-    return hardConstraints[:3]
+    return hardConstraints[:10]
 
 
 import math
