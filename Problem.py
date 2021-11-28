@@ -198,7 +198,7 @@ class Problem:
     def getOldestHardConstraints(self):
         self.sortHardConstraints()
         
-        return self.hardConstraints[:10]
+        return self.hardConstraints[:5]
 
     #Return the age of the constraint
     def returnAge(hard):
@@ -224,18 +224,26 @@ class Problem:
         timeout = 0
         timeout_limit = timeout_lim
 
+        print(f'Focused class set: {sorted(classSet)}')
+
         print(f'Initial Focused penalty before random walk: {self.getFocusedPenalty(solution, focusedConstraints)}')
+
+        candidate = solution.copy()
+
+        lowered = False
 
         #Return the solution if a better candidate is not acheived even after timeout_limit iterations
         while(timeout < timeout_limit):
             #Performing random walk for a distance of 5 steps
-            candidate = self.randomWalk(solution.copy(), steps, classSet)
+            candidate = self.randomWalk(candidate.copy(), steps, classSet)
             #Check if candidate is better than solution using focused penalty
             if(self.getFocusedPenalty(candidate, focusedConstraints) < self.getFocusedPenalty(solution, focusedConstraints)):
-                solution = candidate
+                solution = candidate.copy()
                 timeout = 0
             else:
                 timeout = timeout + 1
+
+
 
         print(f'Final Focused penalty after random walk: {self.getFocusedPenalty(solution, focusedConstraints)}')
         return solution
@@ -292,13 +300,17 @@ class Problem:
         for i in range(distance):
             for eachClass in classSet:
                 #Generates a random step with equal probability for each class 
+
                 step = np.random.choice(step_set)
                 timingIndex,timingsLen = solution[eachClass]
+
                 #Can have a negative value of just -1. We will then given the index of the last timing.
                 if (timingIndex+step) < 0:
                     newIndex = timingsLen - 1
                 else:
                     newIndex = (timingIndex+step)%timingsLen
+
+                #print(f'Changing class {eachClass} from {timingIndex} to {newIndex}')
                 
                 solution[eachClass] = (newIndex, timingsLen)
 
