@@ -1,5 +1,5 @@
 # university-time-scheduling
- University TIme Scheduling Scripts for Amanta
+ University TIme Scheduling Scripts
 
 # How to run experiments
 1. Open multi_solve.py
