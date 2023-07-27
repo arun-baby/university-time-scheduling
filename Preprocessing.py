@@ -122,6 +122,8 @@ class Preprocessing:
         subparts = {}
         classes = {}
 
+        total_timings = 0
+
         #Iterating through each course's XML
         for course in coursesXML:
             #Finding the first config, other configs are not considered
@@ -157,6 +159,7 @@ class Preprocessing:
                         start = timing.get('start')
                         weeks = timing.get('weeks')
                         timingObject = Timing(days, length, start, weeks, penalty)
+                        total_timings = total_timings + 1
                         timings.append(timingObject)
                     #Creating a new class object
                     classObject = Class(classID, classLimit, classParent, subpartID, courseID, timings)
@@ -173,6 +176,7 @@ class Preprocessing:
         print("%d Classes extracted"%(len(classes)))
         print("%d Subparts extracted"%(len(subparts)))
         print("%d Courses extracted"%(len(courses)))
+        print(f'Total timings: {total_timings}')
 
         #Initializing constraint lists
         hardConstraints = []
